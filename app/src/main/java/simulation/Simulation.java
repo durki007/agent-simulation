@@ -3,10 +3,16 @@
  */
 package simulation;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
 // import picocli.CommandLine.Help.Ansi;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
-import org.fusesource.jansi.Ansi.Color;;
+import org.fusesource.jansi.Ansi.Color;
+
+import engine.Engine;;
 
 public class Simulation {
 
@@ -15,24 +21,53 @@ public class Simulation {
     private Integer time; // Aktualna ture
 
     public Simulation(int n, int m, int duration, int gangSize) {
+        this.board = new Board(n, m);
+        this.duration = duration;
+        // Temp class Ratio
+        ArrayList<Integer> ratio = new ArrayList<Integer>();
+        ratio.add(1);
+        ratio.add(1);
+        ratio.add(1);
+        // Populate board
+        board.populate(gangSize, ratio);
+        // Set time to 0
+        this.time = 0;
     }
 
     public void run() {
+        // Main loop
+        while (time < duration) {
+            // Move all agents
+            board.move();
+            // Fight
+            board.fight();
+            // Render board
+            Engine.render(board, time);
+
+            // Wait some time
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            time++;
+        }
     }
 
     public void printStats() {
         // Wypisz koniec na stoud
+        Engine.renderStats(board, time);
         // Wypisz statytki na stdout i do pliku
     }
 
     public static void main(String[] args) {
-        AnsiConsole.systemInstall();
-        // String str = Ansi.AUTO.("@|green Hello |@");
-        // System.out.println(ansi().eraseScreen().fg(RED).a("Hello").fg(GREEN).a("
-        // World").reset());
-        // System.out.println(Ansi.ansi().eraseScreen().render("@|red Hello|@ @|green
-        // World|@"));
-        System.out.print("\u001b[31mHello World");
+        // TODO Parse args
+        // Create new simulation
+        Simulation simulation = new Simulation(10, 10, 10, 10);
+        // Start the simulation
+        simulation.run();
+        // Print stats
+        simulation.printStats();
     }
-
 }

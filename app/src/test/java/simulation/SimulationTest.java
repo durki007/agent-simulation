@@ -10,9 +10,5 @@ import simulation.Simulation;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SimulationTest {
-    @Test
-    void appHasAGreeting() {
-        Simulation classUnderTest = new Simulation();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
+
 }
