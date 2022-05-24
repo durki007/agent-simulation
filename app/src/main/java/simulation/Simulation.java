@@ -3,7 +3,10 @@
  */
 package simulation;
 
-import picocli.CommandLine.Help.Ansi;
+// import picocli.CommandLine.Help.Ansi;
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
+import org.fusesource.jansi.Ansi.Color;;
 
 public class Simulation {
 
@@ -23,9 +26,13 @@ public class Simulation {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello");
+        AnsiConsole.systemInstall();
         // String str = Ansi.AUTO.("@|green Hello |@");
-        // System.out.println(str);
+        // System.out.println(ansi().eraseScreen().fg(RED).a("Hello").fg(GREEN).a("
+        // World").reset());
+        // System.out.println(Ansi.ansi().eraseScreen().render("@|red Hello|@ @|green
+        // World|@"));
+        System.out.print("\u001b[31mHello World");
     }
 
 }
