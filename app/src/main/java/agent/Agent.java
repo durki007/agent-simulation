@@ -7,9 +7,18 @@ import weapon.Weapon;
 public class Agent {
     private Position position;
     private Weapon weapon;
-    private Integer hp = 75;
-    private Integer speed = 2;
+    private Integer hp;
+    private Integer speed;
     private Organisation organisation;
+
+    public Agent() {
+
+    }
+
+    public Agent(Position position, Organisation organisation) {
+        this.position = position;
+        this.organisation = organisation;
+    }
 
     public Position getNextMove() {
         // rng
@@ -31,5 +40,13 @@ public class Agent {
     public Integer getDamage() {
         // rng
         return 0;
+    }
+
+    public Position getPosition() {
+        return this.position;
+    }
+
+    public Organisation getOrganisation() {
+        return organisation;
     }
 }
