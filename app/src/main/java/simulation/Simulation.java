@@ -3,16 +3,12 @@
  */
 package simulation;
 
+import engine.Engine;
+import utils.RatioUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
-
-// import picocli.CommandLine.Help.Ansi;
-import org.fusesource.jansi.Ansi;
-import org.fusesource.jansi.AnsiConsole;
-import org.fusesource.jansi.Ansi.Color;
-
-import engine.Engine;;
 
 public class Simulation {
 
@@ -23,13 +19,8 @@ public class Simulation {
     public Simulation(int n, int m, int duration, int gangSize) {
         this.board = new Board(n, m);
         this.duration = duration;
-        // Temp class Ratio
-        ArrayList<Integer> ratio = new ArrayList<Integer>();
-        ratio.add(1);
-        ratio.add(1);
-        ratio.add(1);
         // Populate board
-        board.populate(gangSize, ratio);
+        board.populate(gangSize, RatioUtils.getRatio());
         // Set time to 0
         this.time = 0;
     }
