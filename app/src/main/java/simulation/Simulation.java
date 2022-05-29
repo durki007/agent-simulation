@@ -23,6 +23,7 @@ public class Simulation {
         board.populate(gangSize, RatioUtils.getRatio());
         // Set time to 0
         this.time = 0;
+        Engine.render(board, time);
     }
 
     public void run() {
@@ -55,7 +56,7 @@ public class Simulation {
     public static void main(String[] args) {
         // TODO Parse args
         // Create new simulation
-        Simulation simulation = new Simulation(10, 10, 10, 10);
+        Simulation simulation = new Simulation(10, 10, 10, 1);
         // Start the simulation
         simulation.run();
         // Print stats
