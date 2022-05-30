@@ -22,7 +22,7 @@ public class Board {
     }
 
     // Populate
-    //TODO: typeRatio is not used
+    // TODO: typeRatio is not used
     public void populate(int gangSize, ArrayList<Integer> typeRatio) {
         System.out.println("Populating the board");
         agents = new ArrayList<Agent>();
