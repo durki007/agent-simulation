@@ -8,6 +8,7 @@ import utils.RatioUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Simulation {
@@ -55,8 +56,52 @@ public class Simulation {
 
     public static void main(String[] args) {
         // TODO Parse args
+        //menu
+        int x = 0;
+        int tempDuration=1;
+        int tempGangSize=1;
+        int tempN=10;
+        int tempM=10;
+        while(x!=4) {
+            System.out.print("\033[H\033[2J");
+            System.out.println("CHOOSE WHAT DO YOU WANT TO DO: ");
+            System.out.println("1. Set duration of the simulation. \n2. Set number of agents per organisation \n3. Set dimensions of the board \n4. Exit");
+            Scanner sc = new Scanner(System.in);
+            x = sc.nextInt();
+            switch (x) {
+                case 1: {
+                    System.out.print("Duration: ");
+                    Scanner input = new Scanner(System.in);
+                    tempDuration = input.nextInt();
+                    break;
+                }
+                case 2: {
+                    System.out.print("Gang size: ");
+
+                    Scanner input = new Scanner(System.in);
+                    tempGangSize = input.nextInt();
+                    break;
+                }
+                case 3: {
+                    System.out.print("n: ");
+                    Scanner input = new Scanner(System.in);
+                    tempN = input.nextInt();
+                    System.out.print("m: ");
+                    input = new Scanner(System.in);
+                    tempM = input.nextInt();
+                    break;
+                }
+                case 4: {
+                    break;
+                }
+            }
+        }
+
+
+
+
         // Create new simulation
-        Simulation simulation = new Simulation(10, 10, 10, 1);
+        Simulation simulation = new Simulation(tempN, tempM, tempDuration, tempGangSize);
         // Start the simulation
         simulation.run();
         // Print stats
