@@ -6,9 +6,9 @@ import weapon.RifleWeapon;
 import weapon.Weapon;
 
 public class BasicAgent extends Agent {
-    private Integer hp;
-    private Integer speed;
-    private Weapon weapon;
+    public Integer hp;
+    public Integer speed;
+    public Weapon weapon;
 
     public BasicAgent() {
         super();

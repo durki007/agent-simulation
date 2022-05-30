@@ -22,6 +22,7 @@ public class Board {
     }
 
     // Populate
+    //TODO: typeRatio is not used
     public void populate(int gangSize, ArrayList<Integer> typeRatio) {
         System.out.println("Populating the board");
         agents = new ArrayList<Agent>();
@@ -35,6 +36,7 @@ public class Board {
 
     // Move all agents
     // TODO: Handle when there is no move to make
+    // TODO: Checking if agent is alive
     public void move() {
         for (Agent agent : agents) {
             Position pos = agent.getNextMove();

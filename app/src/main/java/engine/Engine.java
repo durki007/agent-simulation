@@ -9,7 +9,7 @@ public class Engine {
         System.out.println(board);
         printAgents(board);
     }
-
+    //TODO: Printing to .txt file
     public static void renderStats(Board board, Integer timeFrame) {
         System.out.println("Finished with stats: (stats), at time: " + timeFrame);
     }
