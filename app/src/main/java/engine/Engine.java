@@ -9,7 +9,8 @@ public class Engine {
         System.out.println(board);
         printAgents(board);
     }
-    //TODO: Printing to .txt file
+
+    // TODO: Printing to .txt file
     public static void renderStats(Board board, Integer timeFrame) {
         System.out.println("Finished with stats: (stats), at time: " + timeFrame);
     }
@@ -18,7 +19,7 @@ public class Engine {
     private static void printAgents(Board board) {
         for (Agent agent : board.agents) {
             System.out.println(agent + " " + agent.getOrganisation() + " (" + agent.getPosition().x + ", "
-                    + agent.getPosition().y + ")");
+                    + agent.getPosition().y + ") " + agent.getHp());
         }
     }
 }
