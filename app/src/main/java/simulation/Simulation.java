@@ -56,7 +56,7 @@ public class Simulation {
     public static void main(String[] args) {
         // TODO Parse args
         // Create new simulation
-        Simulation simulation = new Simulation(10, 10, 10, 1);
+        Simulation simulation = new Simulation(10, 10, 3, 1);
         // Start the simulation
         simulation.run();
         // Print stats

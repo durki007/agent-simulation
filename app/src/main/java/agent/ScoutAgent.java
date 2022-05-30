@@ -15,9 +15,6 @@ public class ScoutAgent extends Agent {
     }
 
     public ScoutAgent(Position position, Organisation organisation) {
-        super(position, organisation);
-        this.hp = 50;
-        this.speed = 3;
-        this.weapon = new RifleWeapon();
+        super(position, organisation, 50, 3, new RifleWeapon());
     }
 }
