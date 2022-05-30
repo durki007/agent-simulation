@@ -4,6 +4,7 @@
 package simulation;
 
 import engine.Engine;
+import org.apache.commons.cli.*;
 import utils.RatioUtils;
 
 import java.util.ArrayList;
@@ -55,8 +56,41 @@ public class Simulation {
 
     public static void main(String[] args) {
         // TODO Parse args
+        Options options = new Options();
+        Option n = new Option("n", "nDim", true, "n - dimension of board");
+        n.setRequired(true);
+        options.addOption(n);
+
+        Option m = new Option("m", "mDim", true, "m - dimension of board");
+        m.setRequired(true);
+        options.addOption(m);
+
+        Option d = new Option("d", "duration", true, "Duration of the simulation");
+        d.setRequired(true);
+        options.addOption(d);
+
+        Option gs = new Option("gs", "gangSize", true, "Size of gang");
+        gs.setRequired(true);
+        options.addOption(gs);
+
+        HelpFormatter formatter = new HelpFormatter();
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd;
+        try {
+            cmd = parser.parse(options, args);
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+            formatter.printHelp("User Profile Info", options);
+            System.exit(1);
+            return;
+        }
+        int newN = Integer.parseInt(cmd.getOptionValue("n"));
+        int newM = Integer.parseInt(cmd.getOptionValue("m"));
+        int newDuration= Integer.parseInt(cmd.getOptionValue("d"));
+        int newGangSize = Integer.parseInt(cmd.getOptionValue("gs"));
+
         // Create new simulation
-        Simulation simulation = new Simulation(10, 10, 10, 1);
+        Simulation simulation = new Simulation(newN, newM, newDuration, newGangSize);
         // Start the simulation
         simulation.run();
         // Print stats
