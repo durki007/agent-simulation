@@ -37,6 +37,7 @@ public class Board {
     // Move all agents
     // TODO: Handle when there is no move to make
     // TODO: Checking if agent is alive
+    // TODO: Use agent.getNExtMove()
     public void move() {
         for (Agent agent : agents) {
             Position pos = agent.getNextMove();
@@ -64,6 +65,7 @@ public class Board {
         return pos;
     }
 
+    // TODO: FIx comparing positions
     private Boolean isPositionVacant(Position pos) {
         // Bound check
         if (pos.x > n || pos.x < 0)

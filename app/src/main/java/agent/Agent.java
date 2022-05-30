@@ -31,6 +31,7 @@ public class Agent {
     // WARNIG: Generated position can be invalid
     // TODO: Cuurent aproach is invalid, because Agent jump by 0 squares (end up in
     // starting position after move)
+    // FIXME: BROKEN
     public Position getNextMove() {
         Position tmpPosition = this.position;
         Random rand = new Random();
