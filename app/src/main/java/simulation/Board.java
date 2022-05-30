@@ -6,6 +6,7 @@ import java.util.Random;
 import agent.Agent;
 import agent.BasicAgent;
 import agent.ScoutAgent;
+import agent.TankAgent;
 import utils.Position;
 
 public class Board {
@@ -22,15 +23,23 @@ public class Board {
     }
 
     // Populate
-    // TODO: typeRatio is not used
     public void populate(int gangSize, ArrayList<Integer> typeRatio) {
         System.out.println("Populating the board");
         agents = new ArrayList<Agent>();
         for (Organisation o : Organisation.values()) {
-            for (int i = 0; i < gangSize; i++) {
+            for (int i = 0; i < typeRatio.get(0); i++) {
                 agents.add(new BasicAgent(findVacantPosition(), o));
-                agents.add(new ScoutAgent(findVacantPosition(), o));
+
             }
+            for (int x = 0; x < typeRatio.get(1); x++) {
+                agents.add(new ScoutAgent(findVacantPosition(), o));
+
+            }
+            for (int z = 0; z < typeRatio.get(2); z++) {
+                agents.add(new TankAgent(findVacantPosition(), o));
+
+            }
+
         }
     }
 
