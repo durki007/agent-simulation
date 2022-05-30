@@ -43,7 +43,7 @@ public class Agent {
                 else
                     tmpPosition.x--;
             } else {
-                if (PorM == 2)
+                if (PorM == 1)
                     tmpPosition.y++;
                 else
                     tmpPosition.y--;
@@ -61,7 +61,7 @@ public class Agent {
         return true;
     }
 
-    public void iniflictDamage() {
+    public void inflictDamage() {
 
     }
 
