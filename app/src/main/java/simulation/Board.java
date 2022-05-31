@@ -54,7 +54,8 @@ public class Board {
             // Check if agent is alive first
             if (agent.isAlive()) {
                 for (Agent enemy : agents) {
-                    if (enemy.isAlive() && enemy.isInRange(agent.getPosition())) {
+                    if (enemy.isAlive() && enemy.isInRange(agent.getPosition())
+                            && enemy.getOrganisation() != agent.getOrganisation()) {
                         enemy.inflictDamage(agent.getDamage());
                         break; // Attacks only once
                     }
