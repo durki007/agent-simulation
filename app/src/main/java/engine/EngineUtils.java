@@ -4,15 +4,28 @@ import org.fusesource.jansi.Ansi;
 
 import agent.Agent;
 import agent.AgentType;
+import simulation.Organisation;
 
 public class EngineUtils {
     public static String getAgentString(Agent agent) {
-        return Ansi.ansi().fg(Ansi.Color.BLUE).a(surroundWithBraces(agent.type, getHPString(agent.getHp()))).reset()
+        return Ansi.ansi().fg(getAgentColor(agent.getOrganisation()))
+                .a(surroundWithBraces(agent.type, getHPString(agent.getHp()))).reset()
                 .toString();
     }
 
     private static String getHPString(int hp) {
         return String.format("%3d", hp);
+    }
+
+    private static Ansi.Color getAgentColor(Organisation o) {
+        switch (o) {
+            case MAFIA1:
+                return Ansi.Color.BLUE;
+            case MAFIA2:
+                return Ansi.Color.RED;
+            default:
+                return Ansi.Color.WHITE;
+        }
     }
 
     private static String surroundWithBraces(AgentType type, String string) {

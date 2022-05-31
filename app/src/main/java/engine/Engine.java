@@ -2,9 +2,6 @@ package engine;
 
 import java.util.ArrayList;
 
-import org.fusesource.jansi.Ansi;
-import org.fusesource.jansi.AnsiConsole;
-
 import agent.Agent;
 import simulation.Board;
 
@@ -40,7 +37,8 @@ public class Engine {
         }
         // Print agents
         for (Agent agent : agents) {
-            matrix[agent.getPosition().x][agent.getPosition().y] = EngineUtils.getAgentString(agent);
+            if (agent.isAlive())
+                matrix[agent.getPosition().x][agent.getPosition().y] = EngineUtils.getAgentString(agent);
         }
         return matrix;
     }
@@ -55,9 +53,6 @@ public class Engine {
         for (Agent agent : board.agents) {
             System.out.println(agent + " " + agent.getOrganisation() + " (" + agent.getPosition().x + ", "
                     + agent.getPosition().y + ") " + agent.getHp() + " " + agent.type);
-            // System.out.println(Ansi.ansi().bold().fg(Ansi.Color.BLUE).a("Hello").reset().toString());
-            // System.out.println(Ansi.ansi().render("@|red Hello|@"));
-            // System.out.println("\033[34mhhhh");
         }
     }
 }
