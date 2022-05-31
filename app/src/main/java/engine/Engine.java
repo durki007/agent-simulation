@@ -5,6 +5,7 @@ import simulation.Board;
 
 public class Engine {
     public static void render(Board board, Integer timeFrame) {
+        // Render board
         System.out.println("Time: " + timeFrame);
         System.out.println(board);
         printAgents(board);
