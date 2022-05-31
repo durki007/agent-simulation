@@ -66,11 +66,9 @@ public class Simulation {
         d.setRequired(true);
         options.addOption(d);
 
-        Option r = new Option("r", "ratio", true, "Gang members (basic,scout,tank)");
+        Option r = new Option("r", "ratio", true, "Gang member ratio in format: (basic,scout,tank) ");
         r.setRequired(true);
         options.addOption(r);
-
-
 
         HelpFormatter formatter = new HelpFormatter();
         CommandLineParser parser = new DefaultParser();
