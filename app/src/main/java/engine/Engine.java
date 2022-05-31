@@ -19,6 +19,7 @@ public class Engine {
         printMatrix(createMatrix(board.n, board.m, board.agents));
     }
 
+    // FIXME: Fix direction of matrix
     private static void printMatrix(String[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -30,10 +31,11 @@ public class Engine {
 
     private static String[][] createMatrix(int n, int m, ArrayList<Agent> agents) {
         String matrix[][] = new String[n][m];
+        String spacer = " ... ";
         // Fill with '.'
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = ".";
+                matrix[i][j] = spacer;
             }
         }
         // Print agents
