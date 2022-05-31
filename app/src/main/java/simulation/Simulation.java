@@ -55,7 +55,6 @@ public class Simulation {
     }
 
     public static void main(String[] args) {
-        // TODO Parse args
         Options options = new Options();
         Option n = new Option("n", "nDim", true, "n - dimension of board");
         n.setRequired(true);
@@ -80,13 +79,13 @@ public class Simulation {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("User Profile Info", options);
+            formatter.printHelp("Reuired flags:", options);
             System.exit(1);
             return;
         }
         int newN = Integer.parseInt(cmd.getOptionValue("n"));
         int newM = Integer.parseInt(cmd.getOptionValue("m"));
-        int newDuration= Integer.parseInt(cmd.getOptionValue("d"));
+        int newDuration = Integer.parseInt(cmd.getOptionValue("d"));
         int newGangSize = Integer.parseInt(cmd.getOptionValue("gs"));
 
         // Create new simulation
