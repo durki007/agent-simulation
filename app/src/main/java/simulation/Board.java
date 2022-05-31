@@ -6,6 +6,7 @@ import java.util.Random;
 import agent.Agent;
 import agent.BasicAgent;
 import agent.ScoutAgent;
+import agent.TankAgent;
 import utils.Position;
 
 public class Board {
@@ -22,39 +23,76 @@ public class Board {
     }
 
     // Populate
-    // TODO: typeRatio is not used
     public void populate(int gangSize, ArrayList<Integer> typeRatio) {
         System.out.println("Populating the board");
         agents = new ArrayList<Agent>();
         for (Organisation o : Organisation.values()) {
-            for (int i = 0; i < gangSize; i++) {
+            for (int i = 0; i < typeRatio.get(0); i++) {
                 agents.add(new BasicAgent(findVacantPosition(), o));
-                agents.add(new ScoutAgent(findVacantPosition(), o));
+
             }
+            for (int x = 0; x < typeRatio.get(1); x++) {
+                agents.add(new ScoutAgent(findVacantPosition(), o));
+
+            }
+            for (int z = 0; z < typeRatio.get(2); z++) {
+                agents.add(new TankAgent(findVacantPosition(), o));
+
+            }
+
         }
     }
 
     // Move all agents
-    // TODO: Handle when there is no move to make
-    // TODO: Checking if agent is alive
-    // TODO: Use agent.getNExtMove()
     public void move() {
         for (Agent agent : agents) {
-            Position pos = agent.getNextMove();
-            while (!isPositionVacant(pos)) {
-                pos = getRandomPosition();
+            if (!isSurrounded(agent) && agent.isAlive()) {
+                Position pos = agent.getNextMove();
+                while (!isPositionVacant(pos)) {
+                    pos = agent.getNextMove();
+                }
+                agent.move(pos);
             }
-            agent.move(pos);
         }
         System.out.println("After move: ");
     }
 
     // Fight mechanics
     public void fight() {
-
+        for (Agent agent : agents) {
+            // Check if agent is alive first
+            if (agent.isAlive()) {
+                for (Agent enemy : agents) {
+                    if (enemy.isAlive() && enemy.isInRange(agent.getPosition())
+                            && enemy.getOrganisation() != agent.getOrganisation()) {
+                        enemy.inflictDamage(agent.getDamage());
+                        break; // Attacks only once
+                    }
+                }
+            }
+        }
     }
 
     // Helper functions
+
+    private Boolean isSurrounded(Agent a) {
+        int count = 0;
+        for (Agent agent : agents) {
+            if (a.getPosition().distance(agent.getPosition()) == 1)
+                count++;
+        }
+        // Boundary check
+        if (a.getPosition().x == 0)
+            count++;
+        if (a.getPosition().y == 0)
+            count++;
+
+        if (a.getPosition().x == count - 1)
+            count++;
+        if (a.getPosition().y == m - 1)
+            count++;
+        return count >= 4;
+    }
 
     // TODO: Handle error, when no free position is left
     private Position findVacantPosition() {
@@ -65,17 +103,16 @@ public class Board {
         return pos;
     }
 
-    // TODO: FIx comparing positions
     private Boolean isPositionVacant(Position pos) {
         // Bound check
-        if (pos.x > n || pos.x < 0)
+        if (pos.x >= n || pos.x < 0)
             return false;
-        if (pos.y > m || pos.y < 0)
+        if (pos.y >= m || pos.y < 0)
             return false;
         // Vacancy check
         Boolean checker = true;
         for (Agent agent : agents) {
-            if (agent.getPosition() == pos)
+            if (agent.getPosition().equals(pos))
                 checker = false;
         }
         return checker;

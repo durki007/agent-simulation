@@ -4,11 +4,9 @@
 package simulation;
 
 import engine.Engine;
+import org.apache.commons.cli.*;
 import utils.RatioUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Simulation {
@@ -55,53 +53,41 @@ public class Simulation {
     }
 
     public static void main(String[] args) {
-        // TODO Parse args
-        //menu
-        int x = 0;
-        int tempDuration=1;
-        int tempGangSize=1;
-        int tempN=10;
-        int tempM=10;
-        while(x!=4) {
-            System.out.print("\033[H\033[2J");
-            System.out.println("CHOOSE WHAT DO YOU WANT TO DO: ");
-            System.out.println("1. Set duration of the simulation. \n2. Set number of agents per organisation \n3. Set dimensions of the board \n4. Exit");
-            Scanner sc = new Scanner(System.in);
-            x = sc.nextInt();
-            switch (x) {
-                case 1: {
-                    System.out.print("Duration: ");
-                    Scanner input = new Scanner(System.in);
-                    tempDuration = input.nextInt();
-                    break;
-                }
-                case 2: {
-                    System.out.print("Gang size: ");
+        Options options = new Options();
+        Option n = new Option("n", "nDim", true, "n - dimension of board");
+        n.setRequired(true);
+        options.addOption(n);
 
-                    Scanner input = new Scanner(System.in);
-                    tempGangSize = input.nextInt();
-                    break;
-                }
-                case 3: {
-                    System.out.print("n: ");
-                    Scanner input = new Scanner(System.in);
-                    tempN = input.nextInt();
-                    System.out.print("m: ");
-                    input = new Scanner(System.in);
-                    tempM = input.nextInt();
-                    break;
-                }
-                case 4: {
-                    break;
-                }
-            }
+        Option m = new Option("m", "mDim", true, "m - dimension of board");
+        m.setRequired(true);
+        options.addOption(m);
+
+        Option d = new Option("d", "duration", true, "Duration of the simulation");
+        d.setRequired(true);
+        options.addOption(d);
+
+        Option gs = new Option("gs", "gangSize", true, "Size of gang");
+        gs.setRequired(true);
+        options.addOption(gs);
+
+        HelpFormatter formatter = new HelpFormatter();
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd;
+        try {
+            cmd = parser.parse(options, args);
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+            formatter.printHelp("Reuired flags:", options);
+            System.exit(1);
+            return;
         }
-
-
-
+        int newN = Integer.parseInt(cmd.getOptionValue("n"));
+        int newM = Integer.parseInt(cmd.getOptionValue("m"));
+        int newDuration = Integer.parseInt(cmd.getOptionValue("d"));
+        int newGangSize = Integer.parseInt(cmd.getOptionValue("gs"));
 
         // Create new simulation
-        Simulation simulation = new Simulation(tempN, tempM, tempDuration, tempGangSize);
+        Simulation simulation = new Simulation(newN, newM, newDuration, newGangSize);
         // Start the simulation
         simulation.run();
         // Print stats
