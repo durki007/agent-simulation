@@ -16,5 +16,6 @@ public class ScoutAgent extends Agent {
 
     public ScoutAgent(Position position, Organisation organisation) {
         super(position, organisation, 50, 3, new RifleWeapon());
+        type = AgentType.SCOUT;
     }
 }

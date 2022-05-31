@@ -12,6 +12,7 @@ public class Agent {
     private Integer hp;
     private Integer speed;
     private Organisation organisation;
+    public AgentType type;
 
     public Agent() {
 
