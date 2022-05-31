@@ -96,9 +96,9 @@ public class Board {
 
     private Boolean isPositionVacant(Position pos) {
         // Bound check
-        if (pos.x > n || pos.x < 0)
+        if (pos.x >= n || pos.x < 0)
             return false;
-        if (pos.y > m || pos.y < 0)
+        if (pos.y >= m || pos.y < 0)
             return false;
         // Vacancy check
         Boolean checker = true;
