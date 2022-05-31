@@ -83,10 +83,6 @@ public class Agent {
         return 5;
     }
 
-    public Integer getHp() {
-        return this.hp;
-    }
-
     public Position getPosition() {
         return this.position;
     }
