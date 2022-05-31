@@ -3,7 +3,6 @@ package agent;
 import simulation.Organisation;
 import utils.Position;
 import weapon.FistWeapon;
-import weapon.RifleWeapon;
 import weapon.Weapon;
 
 public class TankAgent extends Agent {

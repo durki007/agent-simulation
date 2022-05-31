@@ -7,8 +7,6 @@ import engine.Engine;
 import org.apache.commons.cli.*;
 import utils.RatioUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class Simulation {

@@ -1,6 +1,5 @@
 package agent;
 
-import java.util.Currency;
 import java.util.Random;
 
 import simulation.Organisation;
