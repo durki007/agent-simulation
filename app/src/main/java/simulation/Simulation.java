@@ -15,11 +15,11 @@ public class Simulation {
     private Integer duration; // Liczba tur
     private Integer time; // Aktualna ture
 
-    public Simulation(int n, int m, int duration, int gangSize) {
+    public Simulation(int n, int m, int duration, String newRatio) {
         this.board = new Board(n, m);
         this.duration = duration;
         // Populate board
-        board.populate(gangSize, RatioUtils.getRatio());
+        board.populate(RatioUtils.getRatio(newRatio));
         // Set time to 0
         this.time = 0;
         Engine.render(board, time);
@@ -66,9 +66,11 @@ public class Simulation {
         d.setRequired(true);
         options.addOption(d);
 
-        Option gs = new Option("gs", "gangSize", true, "Size of gang");
-        gs.setRequired(true);
-        options.addOption(gs);
+        Option r = new Option("r", "ratio", true, "Gang members (basic,scout,tank)");
+        r.setRequired(true);
+        options.addOption(r);
+
+
 
         HelpFormatter formatter = new HelpFormatter();
         CommandLineParser parser = new DefaultParser();
@@ -84,10 +86,10 @@ public class Simulation {
         int newN = Integer.parseInt(cmd.getOptionValue("n"));
         int newM = Integer.parseInt(cmd.getOptionValue("m"));
         int newDuration = Integer.parseInt(cmd.getOptionValue("d"));
-        int newGangSize = Integer.parseInt(cmd.getOptionValue("gs"));
+        String newRatio = cmd.getOptionValue("r");
 
         // Create new simulation
-        Simulation simulation = new Simulation(newN, newM, newDuration, newGangSize);
+        Simulation simulation = new Simulation(newN, newM, newDuration, newRatio);
         // Start the simulation
         simulation.run();
         // Print stats

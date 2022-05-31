@@ -23,7 +23,7 @@ public class Board {
     }
 
     // Populate
-    public void populate(int gangSize, ArrayList<Integer> typeRatio) {
+    public void populate(ArrayList<Integer> typeRatio) {
         System.out.println("Populating the board");
         agents = new ArrayList<Agent>();
         for (Organisation o : Organisation.values()) {
