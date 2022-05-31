@@ -78,8 +78,7 @@ public class Agent {
     }
 
     public int getDamage() {
-        // TODO: Damage rng
-        return 5;
+        return weapon.calculateDamage();
     }
 
     public Position getPosition() {
