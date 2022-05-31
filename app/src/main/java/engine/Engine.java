@@ -2,6 +2,8 @@ package engine;
 
 import java.util.ArrayList;
 
+import org.fusesource.jansi.Ansi;
+
 import agent.Agent;
 import simulation.Board;
 
@@ -18,7 +20,13 @@ public class Engine {
 
     // FIXME: Fix direction of matrix
     private static void printMatrix(String[][] matrix) {
+        System.out.print("      ");
+        for (int i = 0; i < matrix[0].length; i++) {
+            System.out.print(Ansi.ansi().fg(Ansi.Color.YELLOW).a(String.format(" %3d  ", i)).reset().toString());
+        }
+        System.out.println();
         for (int i = 0; i < matrix.length; i++) {
+            System.out.print(Ansi.ansi().fg(Ansi.Color.YELLOW).a(String.format(" %3d  ", i)).reset().toString());
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + " ");
             }
