@@ -35,9 +35,6 @@ public class Board {
     }
 
     // Move all agents
-    // TODO: Handle when there is no move to make
-    // TODO: Checking if agent is alive
-    // TODO: Use agent.getNExtMove()
     public void move() {
         for (Agent agent : agents) {
             if (!isSurrounded(agent) && agent.isAlive()) {
