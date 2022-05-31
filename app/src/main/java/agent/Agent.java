@@ -1,10 +1,10 @@
 package agent;
 
+import java.util.Currency;
 import java.util.Random;
 
 import simulation.Organisation;
 import utils.Position;
-import weapon.PistolWeapon;
 import weapon.Weapon;
 
 public class Agent {
@@ -18,19 +18,16 @@ public class Agent {
 
     }
 
-    public Agent(Position position, Organisation organisation) {
+    public Agent(Position position, Organisation organisation, Integer hp, Integer speed, Weapon weapon) {
         this.position = position;
         this.organisation = organisation;
-        // Default values
-        this.weapon = new PistolWeapon();
-        this.hp = 75;
-        this.speed = 2;
+        this.hp = hp;
+        this.speed = speed;
+        this.weapon = weapon;
     }
 
     // Generates potential position
-    // WARNIG: Generated position can be invalid
-    // TODO: Cuurent aproach is invalid, because Agent jump by 0 squares (end up in
-    // starting position after move)
+    // TODO: Solve that agent can move back to the same position
     public Position getNextMove() {
         Position tmpPosition = this.position;
         Random rand = new Random();
@@ -38,22 +35,32 @@ public class Agent {
             Integer XorY = rand.nextInt(2); // 0-1
             Integer PorM = rand.nextInt(2); // 0-1
             if (XorY == 1) {
-                if (PorM == 1)
-                    tmpPosition.x++;
-                else
-                    tmpPosition.x--;
+                if (PorM == 1) {
+                    tmpPosition = new Position(tmpPosition.x + 1, tmpPosition.y);
+                    // tmpPosition.x++;
+                } else {
+                    tmpPosition = new Position(tmpPosition.x - 1, tmpPosition.y);
+                    // tmpPosition.x--;
+                }
             } else {
-                if (PorM == 1)
-                    tmpPosition.y++;
-                else
-                    tmpPosition.y--;
+                if (PorM == 1) {
+                    tmpPosition = new Position(tmpPosition.x, tmpPosition.y + 1);
+                    // tmpPosition.y++;
+                } else {
+                    tmpPosition = new Position(tmpPosition.x, tmpPosition.y - 1);
+                    // tmpPosition.y--;
+                }
             }
         }
+        // System.out.println("Current: " + position.serialize() + " Proposed: " +
+        // tmpPosition.serialize());
         return tmpPosition;
 
     }
 
     public void move(Position pos) {
+        // System.out.println("Moving agent by a distance of: " +
+        // this.position.distance(pos));
         this.position = pos;
     }
 
@@ -68,6 +75,10 @@ public class Agent {
     public Integer getDamage() {
         // rng
         return 0;
+    }
+
+    public Integer getHp() {
+        return this.hp;
     }
 
     public Position getPosition() {

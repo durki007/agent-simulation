@@ -37,13 +37,16 @@ public class Board {
     // Move all agents
     // TODO: Handle when there is no move to make
     // TODO: Checking if agent is alive
+    // TODO: Use agent.getNExtMove()
     public void move() {
         for (Agent agent : agents) {
-            Position pos = agent.getNextMove();
-            while (!isPositionVacant(pos)) {
-                pos = getRandomPosition();
+            if (!isSurrounded(agent) && agent.isAlive()) {
+                Position pos = agent.getNextMove();
+                while (!isPositionVacant(pos)) {
+                    pos = agent.getNextMove();
+                }
+                agent.move(pos);
             }
-            agent.move(pos);
         }
         System.out.println("After move: ");
     }
@@ -54,6 +57,25 @@ public class Board {
     }
 
     // Helper functions
+
+    private Boolean isSurrounded(Agent a) {
+        int count = 0;
+        for (Agent agent : agents) {
+            if (a.getPosition().distance(agent.getPosition()) == 1)
+                count++;
+        }
+        // Boundary check
+        if (a.getPosition().x == 0)
+            count++;
+        if (a.getPosition().y == 0)
+            count++;
+
+        if (a.getPosition().x == count - 1)
+            count++;
+        if (a.getPosition().y == m - 1)
+            count++;
+        return count >= 4;
+    }
 
     // TODO: Handle error, when no free position is left
     private Position findVacantPosition() {
@@ -73,7 +95,7 @@ public class Board {
         // Vacancy check
         Boolean checker = true;
         for (Agent agent : agents) {
-            if (agent.getPosition() == pos)
+            if (agent.getPosition().equals(pos))
                 checker = false;
         }
         return checker;
