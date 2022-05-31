@@ -65,16 +65,22 @@ public class Agent {
     }
 
     public boolean isAlive() {
-        return true;
+        return this.hp > 0;
     }
 
-    public void inflictDamage() {
-
+    public boolean isInRange(Position pos) {
+        int dX = Math.abs(this.position.x - pos.x);
+        int dY = Math.abs(this.position.y - pos.y);
+        return (dX <= 1 && dY <= 1) && (dX + dY != 0); // If pos == this.pos return false
     }
 
-    public Integer getDamage() {
-        // rng
-        return 0;
+    public void inflictDamage(int dmg) {
+        this.hp -= dmg;
+    }
+
+    public int getDamage() {
+        // TODO: Damage rng
+        return 5;
     }
 
     public Integer getHp() {
@@ -87,5 +93,9 @@ public class Agent {
 
     public Organisation getOrganisation() {
         return organisation;
+    }
+
+    public Integer getHp() {
+        return this.hp;
     }
 }

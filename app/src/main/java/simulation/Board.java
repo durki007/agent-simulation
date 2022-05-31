@@ -50,7 +50,17 @@ public class Board {
 
     // Fight mechanics
     public void fight() {
-
+        for (Agent agent : agents) {
+            // Check if agent is alive first
+            if (agent.isAlive()) {
+                for (Agent enemy : agents) {
+                    if (enemy.isAlive() && enemy.isInRange(agent.getPosition())) {
+                        enemy.inflictDamage(agent.getDamage());
+                        break; // Attacks only once
+                    }
+                }
+            }
+        }
     }
 
     // Helper functions
