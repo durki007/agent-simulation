@@ -19,7 +19,7 @@ public class Engine {
     private static void printAgents(Board board) {
         for (Agent agent : board.agents) {
             System.out.println(agent + " " + agent.getOrganisation() + " (" + agent.getPosition().x + ", "
-                    + agent.getPosition().y + ") HP: " + agent.getHp());
+                    + agent.getPosition().y + ") " + agent.getHp());
         }
     }
 }

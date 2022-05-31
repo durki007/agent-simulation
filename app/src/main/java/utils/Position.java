@@ -20,4 +20,18 @@ public class Position {
         return y;
     }
 
+    public Boolean equals(Position pos) {
+        return x == pos.x && y == pos.y;
+    }
+
+    public int distance(Position pos) {
+        int dX = Math.abs(x - pos.x);
+        int dY = Math.abs(y - pos.y);
+        return dX + dY;
+    }
+
+    public String serialize() {
+        return String.format("(%d, %d)", x, y);
+    }
+
 }
