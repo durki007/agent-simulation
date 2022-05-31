@@ -16,5 +16,6 @@ public class BasicAgent extends Agent {
 
     public BasicAgent(Position position, Organisation organisation) {
         super(position, organisation, 75, 2, new RifleWeapon());
+        type = AgentType.BASIC;
     }
 }

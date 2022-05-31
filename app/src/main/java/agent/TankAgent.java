@@ -17,5 +17,6 @@ public class TankAgent extends Agent {
 
     public TankAgent(Position position, Organisation organisation) {
         super(position, organisation, 100, 1, new FistWeapon());
+        type = AgentType.TANK;
     }
 }
