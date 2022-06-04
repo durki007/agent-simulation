@@ -6,6 +6,7 @@ import org.fusesource.jansi.Ansi;
 
 import agent.Agent;
 import simulation.Board;
+import simulation.Organisation;
 
 public class Engine {
     public static void render(Board board, Integer timeFrame) {
@@ -54,6 +55,10 @@ public class Engine {
     // TODO: Printing to .txt file
     public static void renderStats(Board board, Integer timeFrame) {
         System.out.println("Finished with stats: (stats), at time: " + timeFrame);
+        for (Organisation organisation : board.stats.getDmgDealt().keySet()) {
+            System.out.println(organisation);
+            System.out.println(String.format("%f %d", organisation, board.stats.getDmgDealt().get(organisation)));
+        }
     }
 
     // Temporary helper functions
