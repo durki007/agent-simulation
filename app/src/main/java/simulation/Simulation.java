@@ -14,10 +14,12 @@ public class Simulation {
     private Board board;
     private Integer duration; // Liczba tur
     private Integer time; // Aktualna ture
+    private Statistics stats;
 
     public Simulation(int n, int m, int duration, String newRatio) {
         this.board = new Board(n, m);
         this.duration = duration;
+        this.stats = new Statistics();
         // Populate board
         board.populate(RatioUtils.getRatio(newRatio));
         // Set time to 0
@@ -34,7 +36,8 @@ public class Simulation {
             board.fight();
             // Render board
             Engine.render(board, time);
-
+            // Statistics
+            stats.gather(board);
             // Wait some time
             try {
                 TimeUnit.SECONDS.sleep(1);
@@ -47,8 +50,7 @@ public class Simulation {
     }
 
     public void printStats(String filepath) {
-        // Wypisz koniec na stoud
-        // Wypisz statytki na stdout i do pliku
+        stats.save(filepath);
     }
 
     public static void main(String[] args) {
@@ -69,7 +71,7 @@ public class Simulation {
         r.setRequired(true);
         options.addOption(r);
 
-        // TODO: Dodać opcje '-o' sciezke do pliku zaapisu
+        // TODO: Dodać opcje '-o' sciezke do pliku zapisu
 
         HelpFormatter formatter = new HelpFormatter();
         CommandLineParser parser = new DefaultParser();
