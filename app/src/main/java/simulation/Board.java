@@ -15,14 +15,11 @@ public class Board {
     public int m; // Y-Coordinate
     // List
     public ArrayList<Agent> agents;
-    // Stats
-    public Statistics stats;
 
     // Size constructor
     public Board(int n, int m) {
         this.n = n;
         this.m = m;
-        this.stats = new Statistics();
     }
 
     // Populate
@@ -70,7 +67,6 @@ public class Board {
                             && enemy.getOrganisation() != agent.getOrganisation()) {
                         Integer dmg = agent.getDamage();
                         enemy.inflictDamage(dmg);
-                        stats.dmg(agent.getOrganisation(), dmg);
                         break; // Attacks only once
                     }
                 }

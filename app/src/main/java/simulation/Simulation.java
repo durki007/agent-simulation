@@ -46,9 +46,8 @@ public class Simulation {
         }
     }
 
-    public void printStats() {
+    public void printStats(String filepath) {
         // Wypisz koniec na stoud
-        Engine.renderStats(board, time);
         // Wypisz statytki na stdout i do pliku
     }
 
@@ -69,6 +68,8 @@ public class Simulation {
         Option r = new Option("r", "ratio", true, "Gang member ratio in format: (basic,scout,tank) ");
         r.setRequired(true);
         options.addOption(r);
+
+        // TODO: Dodać opcje '-o' sciezke do pliku zaapisu
 
         HelpFormatter formatter = new HelpFormatter();
         CommandLineParser parser = new DefaultParser();
@@ -91,6 +92,7 @@ public class Simulation {
         // Start the simulation
         simulation.run();
         // Print stats
-        simulation.printStats();
+        // TODO: Add filepath
+        simulation.printStats("");
     }
 }

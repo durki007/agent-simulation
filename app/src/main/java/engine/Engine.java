@@ -19,7 +19,6 @@ public class Engine {
         printMatrix(createMatrix(board.n, board.m, board.agents));
     }
 
-    // FIXME: Fix direction of matrix
     private static void printMatrix(String[][] matrix) {
         System.out.print("      ");
         for (int i = 0; i < matrix[0].length; i++) {
@@ -50,15 +49,6 @@ public class Engine {
                 matrix[agent.getPosition().x][agent.getPosition().y] = EngineUtils.getAgentString(agent);
         }
         return matrix;
-    }
-
-    // TODO: Printing to .txt file
-    public static void renderStats(Board board, Integer timeFrame) {
-        System.out.println("Finished with stats: (stats), at time: " + timeFrame);
-        for (Organisation organisation : board.stats.getDmgDealt().keySet()) {
-            System.out.println(organisation);
-            System.out.println(String.format("%f %d", organisation, board.stats.getDmgDealt().get(organisation)));
-        }
     }
 
     // Temporary helper functions

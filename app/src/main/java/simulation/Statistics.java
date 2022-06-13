@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Statistics {
-    private HashMap<Organisation, Integer> dmgDealt;
+
+    private ArrayList<Board> boards;
 
     public Statistics() {
-        // initialize
-        this.dmgDealt = new HashMap<Organisation, Integer>();
-        for (Organisation o : Organisation.values()) {
-            dmgDealt.put(o, 0);
-        }
+        // TODO: Constructor
     }
 
-    public HashMap<Organisation, Integer> getDmgDealt() {
-        return this.dmgDealt;
+    public void gather(Board board) {
+
     }
 
-    void dmg(Organisation org, Integer dmg) {
-        dmgDealt.replace(org, dmgDealt.get(org) + dmg);
+    public void save(String filepath) {
+
     }
+
 }
