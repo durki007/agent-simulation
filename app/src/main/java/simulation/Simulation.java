@@ -71,7 +71,10 @@ public class Simulation {
         r.setRequired(true);
         options.addOption(r);
 
-        // TODO: Dodać opcje '-o' sciezke do pliku zapisu
+        Option f = new Option("f", "file", true, "filename");
+        r.setRequired(true);
+        options.addOption(f);
+
 
         HelpFormatter formatter = new HelpFormatter();
         CommandLineParser parser = new DefaultParser();
@@ -80,7 +83,7 @@ public class Simulation {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("Reuired flags:", options);
+            formatter.printHelp("Required flags:", options);
             System.exit(1);
             return;
         }
@@ -88,13 +91,13 @@ public class Simulation {
         int newM = Integer.parseInt(cmd.getOptionValue("m"));
         int newDuration = Integer.parseInt(cmd.getOptionValue("d"));
         String newRatio = cmd.getOptionValue("r");
+        String newFileName = cmd.getOptionValue("f");
 
         // Create new simulation
         Simulation simulation = new Simulation(newN, newM, newDuration, newRatio);
         // Start the simulation
         simulation.run();
         // Print stats
-        // TODO: Add filepath
-        simulation.printStats("");
+        simulation.printStats(newFileName);
     }
 }

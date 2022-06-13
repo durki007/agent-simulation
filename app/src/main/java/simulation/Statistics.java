@@ -9,7 +9,7 @@ public class Statistics {
 
     public Statistics() {
         this.boards = new ArrayList<Board>();
-    }
+    }   
 
     public void gather(Board board) {
         this.boards.add(board);
