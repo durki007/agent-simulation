@@ -1,11 +1,7 @@
 package simulation;
 
 import java.io.FileWriter;
-import java.sql.Time;
 import java.util.ArrayList;
-
-import org.checkerframework.checker.units.qual.s;
-
 import agent.Agent;
 
 public class Statistics {

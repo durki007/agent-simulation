@@ -71,10 +71,9 @@ public class Simulation {
         r.setRequired(true);
         options.addOption(r);
 
-        Option f = new Option("f", "file", true, "filename");
+        Option f = new Option("o", "file", true, "filename");
         r.setRequired(true);
         options.addOption(f);
-
 
         HelpFormatter formatter = new HelpFormatter();
         CommandLineParser parser = new DefaultParser();
@@ -91,7 +90,7 @@ public class Simulation {
         int newM = Integer.parseInt(cmd.getOptionValue("m"));
         int newDuration = Integer.parseInt(cmd.getOptionValue("d"));
         String newRatio = cmd.getOptionValue("r");
-        String newFileName = cmd.getOptionValue("f");
+        String newFileName = cmd.getOptionValue("o");
 
         // Create new simulation
         Simulation simulation = new Simulation(newN, newM, newDuration, newRatio);
