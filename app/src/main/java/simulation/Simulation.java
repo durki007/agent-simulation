@@ -37,7 +37,7 @@ public class Simulation {
             // Render board
             Engine.render(board, time);
             // Statistics
-            stats.gather(board);
+            stats.gather((Board)board.clone());
             // Wait some time
             try {
                 TimeUnit.SECONDS.sleep(1);

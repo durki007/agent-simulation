@@ -22,26 +22,6 @@ public class Board implements Cloneable{
         this.m = m;
     }
 
-
-    @Override
-    public Object clone() throws CloneNotSupportedException
-    {
-        Board b = null;
-        try{
-            b = (Board) super.clone();
-        }
-        catch (CloneNotSupportedException e) {
-            b = new Board(this.n,this.m);
-        }
-        b.agents = (ArrayList<Agent>) this.agents.clone();
-         return b;
-
-    }
-
-
-
-
-
     // Populate
     public void populate(ArrayList<Integer> typeRatio) {
         System.out.println("Populating the board");
@@ -151,5 +131,16 @@ public class Board implements Cloneable{
             l.add(agent);
         }
         return l;
+    }
+
+    @Override
+    public Board clone() {
+        try {
+            Board clone = (Board) super.clone();
+            clone.agents = this.agents;
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
