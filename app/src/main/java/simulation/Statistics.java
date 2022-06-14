@@ -3,6 +3,7 @@ package simulation;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import agent.Agent;
+import com.rits.cloning.Cloner;
 
 public class Statistics {
 
@@ -13,7 +14,10 @@ public class Statistics {
     }
 
     public void gather(Board board) {
-        this.boards.add(board.copy());
+        Cloner cloner = new Cloner();
+        Board clone = cloner.deepClone(board);
+        this.boards.add(clone);
+
         // System.out.println("Gathered:" + board);
     }
 
@@ -21,7 +25,7 @@ public class Statistics {
         final String spacer = "    ";
         System.out.println("Saving to file: " + filepath);
         ArrayList<String> lines = new ArrayList<String>();
-        int t = 1;
+        int t = 0;
         for (Board board : this.boards) {
             lines.add(String.format("Time: %d", t));
             for (Organisation o : Organisation.values()) {

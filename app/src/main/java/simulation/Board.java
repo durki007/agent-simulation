@@ -7,6 +7,7 @@ import agent.Agent;
 import agent.BasicAgent;
 import agent.ScoutAgent;
 import agent.TankAgent;
+
 import utils.Position;
 
 public class Board {
@@ -22,14 +23,8 @@ public class Board {
         this.m = m;
     }
 
-    public Board copy() {
-        Board b = new Board(n, m);
-        b.agents = new ArrayList<Agent>();
-        for (Agent agent : agents) {
-            b.agents.add(agent);
-        }
-        return b;
-    }
+    //copying constructor
+
 
     // Populate
     public void populate(ArrayList<Integer> typeRatio) {
@@ -141,4 +136,5 @@ public class Board {
         }
         return l;
     }
+
 }

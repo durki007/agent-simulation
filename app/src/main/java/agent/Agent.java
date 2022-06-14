@@ -6,7 +6,7 @@ import simulation.Organisation;
 import utils.Position;
 import weapon.Weapon;
 
-public class Agent {
+public class Agent  {
     private Position position;
     private Weapon weapon;
     private Integer hp;
@@ -91,5 +91,17 @@ public class Agent {
 
     public Integer getHp() {
         return this.hp;
+    }
+
+    @Override
+    public Agent clone() {
+        try {
+            Agent clone = (Agent) super.clone();
+            clone.organisation = this.organisation;
+            clone.hp = this.hp;
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

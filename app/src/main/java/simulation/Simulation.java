@@ -22,6 +22,7 @@ public class Simulation {
         this.stats = new Statistics();
         // Populate board
         board.populate(RatioUtils.getRatio(newRatio));
+        stats.gather(board);
         // Set time to 0
         this.time = 0;
         Engine.render(board, time);
