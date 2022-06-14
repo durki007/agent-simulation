@@ -14,10 +14,12 @@ public class Simulation {
     private Board board;
     private Integer duration; // Liczba tur
     private Integer time; // Aktualna ture
+    private Statistics stats;
 
     public Simulation(int n, int m, int duration, String newRatio) {
         this.board = new Board(n, m);
         this.duration = duration;
+        this.stats = new Statistics();
         // Populate board
         board.populate(RatioUtils.getRatio(newRatio));
         // Set time to 0
@@ -34,7 +36,8 @@ public class Simulation {
             board.fight();
             // Render board
             Engine.render(board, time);
-
+            // Statistics
+            stats.gather(board);
             // Wait some time
             try {
                 TimeUnit.SECONDS.sleep(1);
@@ -46,10 +49,8 @@ public class Simulation {
         }
     }
 
-    public void printStats() {
-        // Wypisz koniec na stoud
-        Engine.renderStats(board, time);
-        // Wypisz statytki na stdout i do pliku
+    public void printStats(String filepath) {
+        stats.save(filepath);
     }
 
     public static void main(String[] args) {
@@ -70,6 +71,10 @@ public class Simulation {
         r.setRequired(true);
         options.addOption(r);
 
+        Option f = new Option("o", "file", true, "filename");
+        r.setRequired(true);
+        options.addOption(f);
+
         HelpFormatter formatter = new HelpFormatter();
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd;
@@ -77,7 +82,7 @@ public class Simulation {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("Reuired flags:", options);
+            formatter.printHelp("Required flags:", options);
             System.exit(1);
             return;
         }
@@ -85,12 +90,13 @@ public class Simulation {
         int newM = Integer.parseInt(cmd.getOptionValue("m"));
         int newDuration = Integer.parseInt(cmd.getOptionValue("d"));
         String newRatio = cmd.getOptionValue("r");
+        String newFileName = cmd.getOptionValue("o");
 
         // Create new simulation
         Simulation simulation = new Simulation(newN, newM, newDuration, newRatio);
         // Start the simulation
         simulation.run();
         // Print stats
-        simulation.printStats();
+        simulation.printStats(newFileName);
     }
 }

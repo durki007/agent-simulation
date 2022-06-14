@@ -6,6 +6,7 @@ import org.fusesource.jansi.Ansi;
 
 import agent.Agent;
 import simulation.Board;
+import simulation.Organisation;
 
 public class Engine {
     public static void render(Board board, Integer timeFrame) {
@@ -18,7 +19,6 @@ public class Engine {
         printMatrix(createMatrix(board.n, board.m, board.agents));
     }
 
-    // FIXME: Fix direction of matrix
     private static void printMatrix(String[][] matrix) {
         System.out.print("      ");
         for (int i = 0; i < matrix[0].length; i++) {
@@ -49,11 +49,6 @@ public class Engine {
                 matrix[agent.getPosition().x][agent.getPosition().y] = EngineUtils.getAgentString(agent);
         }
         return matrix;
-    }
-
-    // TODO: Printing to .txt file
-    public static void renderStats(Board board, Integer timeFrame) {
-        System.out.println("Finished with stats: (stats), at time: " + timeFrame);
     }
 
     // Temporary helper functions
