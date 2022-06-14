@@ -17,7 +17,7 @@ public class EngineUtils {
         return String.format("%3d", hp);
     }
 
-    private static Ansi.Color getAgentColor(Organisation o) {
+    public static Ansi.Color getAgentColor(Organisation o) {
         switch (o) {
             case MAFIA1:
                 return Ansi.Color.BLUE;

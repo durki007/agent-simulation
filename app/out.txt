@@ -1,0 +1,30 @@
+Time: 1
+MAFIA1 :
+     BASIC HP: 36
+     SCOUT HP: 50
+     TANK HP: 40
+MAFIA2 :
+     BASIC HP: 75
+     SCOUT HP: -12
+     TANK HP: 40
+
+Time: 2
+MAFIA1 :
+     BASIC HP: 36
+     SCOUT HP: 50
+     TANK HP: 40
+MAFIA2 :
+     BASIC HP: 75
+     SCOUT HP: -12
+     TANK HP: 40
+
+Time: 3
+MAFIA1 :
+     BASIC HP: 36
+     SCOUT HP: 50
+     TANK HP: 40
+MAFIA2 :
+     BASIC HP: 75
+     SCOUT HP: -12
+     TANK HP: 40
+

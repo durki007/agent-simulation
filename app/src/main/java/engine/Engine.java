@@ -6,7 +6,6 @@ import org.fusesource.jansi.Ansi;
 
 import agent.Agent;
 import simulation.Board;
-import simulation.Organisation;
 
 public class Engine {
     public static void render(Board board, Integer timeFrame) {
@@ -54,8 +53,16 @@ public class Engine {
     // Temporary helper functions
     private static void printAgents(Board board) {
         for (Agent agent : board.agents) {
-            System.out.println(agent + " " + agent.getOrganisation() + " (" + agent.getPosition().x + ", "
-                    + agent.getPosition().y + ") " + agent.getHp() + " " + agent.type);
+            System.out
+                    .println(
+                            Ansi.ansi().fg(EngineUtils.getAgentColor(agent.getOrganisation()))
+                                    .a(String.format("%s - %s - POS: (%d,%d) HP: %d", agent.getOrganisation(),
+                                            agent.type, agent.getPosition().x, agent.getPosition().y, agent.getHp()))
+                                    .reset()
+                                    .toString());
+            // System.out.println(agent.getOrganisation() + " (" + agent.getPosition().x +
+            // ", "
+            // + agent.getPosition().y + ") " + agent.getHp() + " " + agent.type);
         }
     }
 }
