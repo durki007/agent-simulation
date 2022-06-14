@@ -23,6 +23,8 @@ public class EngineUtils {
                 return Ansi.Color.BLUE;
             case MAFIA2:
                 return Ansi.Color.RED;
+            case MAFIA3:
+                return Ansi.Color.GREEN;
             default:
                 return Ansi.Color.WHITE;
         }
