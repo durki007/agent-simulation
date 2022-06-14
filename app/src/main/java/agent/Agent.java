@@ -6,7 +6,7 @@ import simulation.Organisation;
 import utils.Position;
 import weapon.Weapon;
 
-public class Agent implements Cloneable {
+public class Agent  {
     private Position position;
     private Weapon weapon;
     private Integer hp;

@@ -3,6 +3,7 @@ package simulation;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import agent.Agent;
+import com.rits.cloning.Cloner;
 
 public class Statistics {
 
@@ -13,8 +14,11 @@ public class Statistics {
     }
 
 
-    public void gather(Board board) throws CloneNotSupportedException {
-        this.boards.add((Board) board.clone());
+    public void gather(Board board) {
+        Cloner cloner = new Cloner();
+        Board clone = cloner.deepClone(board);
+        this.boards.add(clone);
+
         // System.out.println("Gathered:" + board);
     }
 

@@ -7,9 +7,10 @@ import agent.Agent;
 import agent.BasicAgent;
 import agent.ScoutAgent;
 import agent.TankAgent;
+
 import utils.Position;
 
-public class Board implements Cloneable{
+public class Board {
     // Size
     public int n; // X-Coordinate
     public int m; // Y-Coordinate
@@ -21,6 +22,9 @@ public class Board implements Cloneable{
         this.n = n;
         this.m = m;
     }
+
+    //copying constructor
+
 
     // Populate
     public void populate(ArrayList<Integer> typeRatio) {
@@ -133,14 +137,4 @@ public class Board implements Cloneable{
         return l;
     }
 
-    @Override
-    public Board clone() {
-        try {
-            Board clone = (Board) super.clone();
-            clone.agents = this.agents;
-            return clone;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
-    }
 }

@@ -27,7 +27,7 @@ public class Simulation {
         Engine.render(board, time);
     }
 
-    public void run() throws CloneNotSupportedException {
+    public void run(){
         // Main loop
         while (time < duration) {
             // Move all agents
@@ -37,7 +37,7 @@ public class Simulation {
             // Render board
             Engine.render(board, time);
             // Statistics
-            stats.gather((Board)board.clone());
+            stats.gather(board);
             // Wait some time
             try {
                 TimeUnit.SECONDS.sleep(1);
@@ -52,7 +52,7 @@ public class Simulation {
         stats.save(filepath);
     }
 
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args){
         Options options = new Options();
         Option n = new Option("n", "nDim", true, "n - dimension of board");
         n.setRequired(true);
