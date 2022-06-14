@@ -22,6 +22,15 @@ public class Board {
         this.m = m;
     }
 
+    public Board copy() {
+        Board b = new Board(n, m);
+        b.agents = new ArrayList<Agent>();
+        for (Agent agent : agents) {
+            b.agents.add(agent);
+        }
+        return b;
+    }
+
     // Populate
     public void populate(ArrayList<Integer> typeRatio) {
         System.out.println("Populating the board");
@@ -124,5 +133,13 @@ public class Board {
         int x = rand.nextInt(this.n);
         int y = rand.nextInt(this.m);
         return new Position(x, y);
+    }
+
+    public ArrayList<Agent> getAgents() {
+        ArrayList<Agent> l = new ArrayList<Agent>();
+        for (Agent agent : this.agents) {
+            l.add(agent);
+        }
+        return l;
     }
 }
