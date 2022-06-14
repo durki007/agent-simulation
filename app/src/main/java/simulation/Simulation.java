@@ -22,12 +22,13 @@ public class Simulation {
         this.stats = new Statistics();
         // Populate board
         board.populate(RatioUtils.getRatio(newRatio));
+        stats.gather(board);
         // Set time to 0
         this.time = 0;
         Engine.render(board, time);
     }
 
-    public void run(){
+    public void run() {
         // Main loop
         while (time < duration) {
             // Move all agents
@@ -52,7 +53,7 @@ public class Simulation {
         stats.save(filepath);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Options options = new Options();
         Option n = new Option("n", "nDim", true, "n - dimension of board");
         n.setRequired(true);

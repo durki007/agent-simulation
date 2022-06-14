@@ -13,7 +13,6 @@ public class Statistics {
         this.boards = new ArrayList<Board>();
     }
 
-
     public void gather(Board board) {
         Cloner cloner = new Cloner();
         Board clone = cloner.deepClone(board);
@@ -26,7 +25,7 @@ public class Statistics {
         final String spacer = "    ";
         System.out.println("Saving to file: " + filepath);
         ArrayList<String> lines = new ArrayList<String>();
-        int t = 1;
+        int t = 0;
         for (Board board : this.boards) {
             lines.add(String.format("Time: %d", t));
             for (Organisation o : Organisation.values()) {
