@@ -104,7 +104,6 @@ public class Board {
         return count >= 4;
     }
 
-    // TODO: Handle error, when no free position is left
     private Position findVacantPosition() {
         Position pos = getRandomPosition();
         while (!isPositionVacant(pos)) {

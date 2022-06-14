@@ -27,7 +27,6 @@ public class Agent {
     }
 
     // Generates potential position
-    // TODO: Solve that agent can move back to the same position
     public Position getNextMove() {
         Position tmpPosition = this.position;
         Random rand = new Random();

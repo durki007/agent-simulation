@@ -1,42 +1,170 @@
 Time: 1
 MAFIA1 :
+     BASIC HP: 29
      BASIC HP: 75
-     SCOUT HP: 30
-     TANK HP: 31
+     SCOUT HP: -14
+     TANK HP: 100
 MAFIA2 :
      BASIC HP: 75
-     SCOUT HP: 50
-     TANK HP: 57
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
 MAFIA3 :
-     BASIC HP: 55
-     SCOUT HP: -10
-     TANK HP: 34
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
 
 Time: 2
 MAFIA1 :
+     BASIC HP: 29
      BASIC HP: 75
-     SCOUT HP: 30
-     TANK HP: 31
+     SCOUT HP: -14
+     TANK HP: 100
 MAFIA2 :
      BASIC HP: 75
-     SCOUT HP: 50
-     TANK HP: 57
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
 MAFIA3 :
-     BASIC HP: 55
-     SCOUT HP: -10
-     TANK HP: 34
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
 
 Time: 3
 MAFIA1 :
+     BASIC HP: 29
      BASIC HP: 75
-     SCOUT HP: 30
-     TANK HP: 31
+     SCOUT HP: -14
+     TANK HP: 100
 MAFIA2 :
      BASIC HP: 75
-     SCOUT HP: 50
-     TANK HP: 57
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
 MAFIA3 :
-     BASIC HP: 55
-     SCOUT HP: -10
-     TANK HP: 34
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
+
+Time: 4
+MAFIA1 :
+     BASIC HP: 29
+     BASIC HP: 75
+     SCOUT HP: -14
+     TANK HP: 100
+MAFIA2 :
+     BASIC HP: 75
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
+MAFIA3 :
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
+
+Time: 5
+MAFIA1 :
+     BASIC HP: 29
+     BASIC HP: 75
+     SCOUT HP: -14
+     TANK HP: 100
+MAFIA2 :
+     BASIC HP: 75
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
+MAFIA3 :
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
+
+Time: 6
+MAFIA1 :
+     BASIC HP: 29
+     BASIC HP: 75
+     SCOUT HP: -14
+     TANK HP: 100
+MAFIA2 :
+     BASIC HP: 75
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
+MAFIA3 :
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
+
+Time: 7
+MAFIA1 :
+     BASIC HP: 29
+     BASIC HP: 75
+     SCOUT HP: -14
+     TANK HP: 100
+MAFIA2 :
+     BASIC HP: 75
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
+MAFIA3 :
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
+
+Time: 8
+MAFIA1 :
+     BASIC HP: 29
+     BASIC HP: 75
+     SCOUT HP: -14
+     TANK HP: 100
+MAFIA2 :
+     BASIC HP: 75
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
+MAFIA3 :
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
+
+Time: 9
+MAFIA1 :
+     BASIC HP: 29
+     BASIC HP: 75
+     SCOUT HP: -14
+     TANK HP: 100
+MAFIA2 :
+     BASIC HP: 75
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
+MAFIA3 :
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
+
+Time: 10
+MAFIA1 :
+     BASIC HP: 29
+     BASIC HP: 75
+     SCOUT HP: -14
+     TANK HP: 100
+MAFIA2 :
+     BASIC HP: 75
+     BASIC HP: -11
+     SCOUT HP: -19
+     TANK HP: -12
+MAFIA3 :
+     BASIC HP: -6
+     BASIC HP: -10
+     SCOUT HP: -31
+     TANK HP: -8
 
