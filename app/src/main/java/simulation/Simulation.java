@@ -27,7 +27,7 @@ public class Simulation {
         Engine.render(board, time);
     }
 
-    public void run() {
+    public void run() throws CloneNotSupportedException {
         // Main loop
         while (time < duration) {
             // Move all agents
@@ -52,7 +52,7 @@ public class Simulation {
         stats.save(filepath);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         Options options = new Options();
         Option n = new Option("n", "nDim", true, "n - dimension of board");
         n.setRequired(true);

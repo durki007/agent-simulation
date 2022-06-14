@@ -9,7 +9,7 @@ import agent.ScoutAgent;
 import agent.TankAgent;
 import utils.Position;
 
-public class Board {
+public class Board implements Cloneable{
     // Size
     public int n; // X-Coordinate
     public int m; // Y-Coordinate
@@ -22,14 +22,25 @@ public class Board {
         this.m = m;
     }
 
-    public Board copy() {
-        Board b = new Board(n, m);
-        b.agents = new ArrayList<Agent>();
-        for (Agent agent : agents) {
-            b.agents.add(agent);
+
+    @Override
+    public Object clone() throws CloneNotSupportedException
+    {
+        Board b = null;
+        try{
+            b = (Board) super.clone();
         }
-        return b;
+        catch (CloneNotSupportedException e) {
+            b = new Board(this.n,this.m);
+        }
+        b.agents = (ArrayList<Agent>) this.agents.clone();
+         return b;
+
     }
+
+
+
+
 
     // Populate
     public void populate(ArrayList<Integer> typeRatio) {

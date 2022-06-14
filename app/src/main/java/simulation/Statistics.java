@@ -12,8 +12,9 @@ public class Statistics {
         this.boards = new ArrayList<Board>();
     }
 
-    public void gather(Board board) {
-        this.boards.add(board.copy());
+
+    public void gather(Board board) throws CloneNotSupportedException {
+        this.boards.add((Board) board.clone());
         // System.out.println("Gathered:" + board);
     }
 
